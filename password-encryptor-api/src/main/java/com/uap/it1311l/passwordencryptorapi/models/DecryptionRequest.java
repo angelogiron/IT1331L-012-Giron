@@ -10,6 +10,4 @@ public class DecryptionRequest {
 	public void setEncryptedPassword(String encryptedPassword) {
 		this.encryptedPassword = encryptedPassword;
 	}
-	
-	
 }

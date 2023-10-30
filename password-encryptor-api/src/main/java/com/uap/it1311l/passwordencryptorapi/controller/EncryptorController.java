@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EncryptorController {
 
-    @Autowired
-    EncryptDecryptService encryptDecryptService;
-
-    @GetMapping("/api/encryption")
-    public EncryptionResponse encryptString(@RequestBody UapEncryptionRequest request){
-        return encryptDecryptService.encrypt(request.getPassword());
-    }
-    
-    @GetMapping("/api/decryption")
-	public DecryptionResponse decryptString(@RequestBody DecryptionRequest request){
+	@Autowired
+	EncryptDecryptService encryptDecryptService;
+	
+	@GetMapping("/api/encryption")
+	public EncryptionResponse encryptString(@RequestBody UapEncryptionRequest request) {
+		return encryptDecryptService.encrypt(request.getPassword());
+	}
+	
+	@GetMapping("/api/decryption")
+	public DecryptionResponse decryptString(@RequestBody DecryptionRequest request) throws Exception {
 		return encryptDecryptService.decrypt(request.getEncryptedPassword());
 	}
 }

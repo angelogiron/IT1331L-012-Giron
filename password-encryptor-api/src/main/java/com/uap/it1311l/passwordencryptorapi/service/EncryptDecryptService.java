@@ -19,16 +19,15 @@ public class EncryptDecryptService {
     passwordMyBatis batis;
 
     public EncryptionResponse encrypt(String password) {
-		EncryptionResponse response = api.encrypt("my-secret-key", password, "DES");
+		EncryptionResponse response = api.encrypt("my-secret-key", password, "AES");
 		batis.insert(response.getResult());
 		return response;
 	}
 
 	public DecryptionResponse decrypt(String encryptedPassword){
-		String encryptedText = batis.findbyEncryptedPassword(encryptedPassword);
-		DecryptionResponse response = api.decrypt("DES", "my-secret-key", encryptedText);
+		String encryptedText = batis.findEncryptedPassword(encryptedPassword);
+		DecryptionResponse response = api.decrypt("AES", "my-secret-key", encryptedText);
 		return response;
 	}
-
 
 }
