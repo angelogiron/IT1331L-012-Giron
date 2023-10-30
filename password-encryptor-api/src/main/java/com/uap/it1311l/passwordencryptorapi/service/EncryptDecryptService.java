@@ -5,7 +5,6 @@ import com.uap.it1311l.passwordencryptorapi.models.EncryptedPasswordRequest;
 import com.uap.it1311l.passwordencryptorapi.models.EncryptionResponse;
 import com.uap.it1311l.passwordencryptorapi.models.password;
 import com.uap.it1311l.passwordencryptorapi.repository.passwordMyBatis;
-import com.uap.it1311l.passwordencryptorapi.webclient.DecryptionApiClient;
 import com.uap.it1311l.passwordencryptorapi.webclient.EncryptionApiClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +14,6 @@ public class EncryptDecryptService {
 
     @Autowired
     EncryptionApiClient encryptionApiClient;
-
-    @Autowired
-    DecryptionApiClient decryptionApiClient;
 
     @Autowired
     passwordMyBatis passwordMyBatis;
@@ -36,7 +32,7 @@ public class EncryptDecryptService {
             return new DecryptionResponse("Encrypted Password does not exist");
         }
 
-        DecryptionResponse decryptionResponse = decryptionApiClient.decrypt("AES", "whateverkeyyouwant", encryptedText);
+        DecryptionResponse decryptionResponse = encryptionApiClient.decrypt("AES", "whateverkeyyouwant", encryptedText);
         return decryptionResponse;
     }
 
