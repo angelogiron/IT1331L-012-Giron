@@ -25,10 +25,10 @@ public class EncryptDecryptService {
     }
 
     public DecryptionResponse decrypt(EncryptedPasswordRequest request) {
-        String encryptedText = request.getEncryptedPassword();
-        password passwordEntity = passwordMyBatis.findByEncryptedPassword(request.getEncryptedPassword());
+        
+        String encryptedText = passwordMyBatis.findbyEncryptedPassword(request.getEncryptedPassword());
 
-        if (passwordEntity == null) {
+        if (encryptedText == null) {
             return new DecryptionResponse("Encrypted Password does not exist");
         }
 

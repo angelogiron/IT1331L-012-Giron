@@ -13,6 +13,6 @@ public interface passwordMyBatis {
     @Insert("INSERT INTO password (encryptedPassword) VALUES (#{encryptedPassword})")
     void savePassword(@Param("encryptedPassword") String encryptedPassword);
 
-    @Select("SELECT * FROM password WHERE encryptedPassword = #{encryptedPassword}")
-    password findByEncryptedPassword(@Param("encryptedPassword") String encryptedPassword);
+    @Select("SELECT encryptedPassword FROM password WHERE encryptedPassword = #{encryptedPassword}")
+    String findbyEncryptedPassword(String encryptedPassword);
 }
