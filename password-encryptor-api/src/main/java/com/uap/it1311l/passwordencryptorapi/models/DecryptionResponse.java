@@ -21,7 +21,6 @@ public class DecryptionResponse {
         this.status = status;
     }
 
-    public DecryptionResponse(String result) {
-        this.result = result;
-    }
+    
+    
 }

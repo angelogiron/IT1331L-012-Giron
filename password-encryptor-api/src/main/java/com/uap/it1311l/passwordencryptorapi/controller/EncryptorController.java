@@ -1,7 +1,7 @@
 package com.uap.it1311l.passwordencryptorapi.controller;
 
+import com.uap.it1311l.passwordencryptorapi.models.DecryptionRequest;
 import com.uap.it1311l.passwordencryptorapi.models.DecryptionResponse;
-import com.uap.it1311l.passwordencryptorapi.models.EncryptedPasswordRequest;
 import com.uap.it1311l.passwordencryptorapi.models.EncryptionResponse;
 import com.uap.it1311l.passwordencryptorapi.models.UapEncryptionRequest;
 import com.uap.it1311l.passwordencryptorapi.service.EncryptDecryptService;
@@ -22,7 +22,7 @@ public class EncryptorController {
     }
     
     @GetMapping("/api/decryption")
-    public DecryptionResponse decrypt(@RequestBody EncryptedPasswordRequest request) {
-        return encryptDecryptService.decrypt(request);
-    }
+	public DecryptionResponse decryptString(@RequestBody DecryptionRequest request){
+		return encryptDecryptService.decrypt(request.getEncryptedPassword());
+	}
 }
