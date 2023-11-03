@@ -15,7 +15,7 @@ public class EncryptionApiConfig
     {
         WebClient webClient = WebClient.builder()
                 .baseUrl("https://encryption-api1.p.rapidapi.com/api/Cryptor")
-                .defaultHeader("X-RapidAPI-Key", "b990dd46camsh37f2a7fcf8d9db2p1a7b44jsna9b6c7a63d0a")
+                .defaultHeader("X-RapidAPI-Key", "4feda53560msh2218f4c19744832p1f60d2jsnf979d6b5981c")
                 .defaultHeader("X-RapidAPI-Host", "encryption-api1.p.rapidapi.com")
                 .build();
 

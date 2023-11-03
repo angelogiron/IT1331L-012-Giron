@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class EncryptDecryptService 
 {
     @Autowired
-    EncryptionApiClient eapi;
+    EncryptionApiClient api;
     
     
     @Autowired
@@ -23,7 +23,7 @@ public class EncryptDecryptService
     
     public EncryptionResponse encrypt(String password)
     {
-    	EncryptionResponse response = eapi.encrypt("my-secret-key", URLEncoder.encode(password, StandardCharsets.UTF_8), "AES");
+    	EncryptionResponse response = api.encrypt("my-secret-key", URLEncoder.encode(password, StandardCharsets.UTF_8), "AES");
 		batis.insert(response.getResult());
 		return response;
     }
@@ -32,12 +32,12 @@ public class EncryptDecryptService
     {
         if (batis.exists(encryptedText) > 0) 
         {
-            DecryptionResponse response = eapi.decrypt("my-secret-key", encryptedText, "AES");
+            DecryptionResponse response = api.decrypt("my-secret-key", encryptedText, "AES");
             return response.getResult();
         } 
         else 
         {
-            return "Encrypted Password does not exist.";
+            return "Encrypted Password is not available in this table.";
         }
     } 
 }
