@@ -22,7 +22,15 @@ public class EncryptorController {
 	}
 	
 	@GetMapping("/api/decryption")
-	public DecryptionResponse decryptString(@RequestBody DecryptionRequest request) throws Exception {
-		return encryptDecryptService.decrypt(request.getEncryptedPassword());
-	}
+    public String decryptString(@RequestBody UapEncryptionRequest request) 
+    {
+        String encryptedPassword = request.getPassword();
+        DecryptionResponse decryptionResponse = encryptDecryptService.decrypt(encryptedPassword);
+        
+        if (decryptionResponse == null) 
+        {
+            return "Encrypted Password does not exist.";
+        }
+        return decryptionResponse.getResult();
+    }
 }

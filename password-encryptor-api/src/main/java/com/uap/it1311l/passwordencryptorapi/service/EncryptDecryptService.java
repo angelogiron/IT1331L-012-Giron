@@ -8,6 +8,8 @@ import com.uap.it1311l.passwordencryptorapi.repository.passwordMyBatis;
 import com.uap.it1311l.passwordencryptorapi.webclient.EncryptionApiClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 @Service
 public class EncryptDecryptService {
@@ -19,7 +21,7 @@ public class EncryptDecryptService {
     passwordMyBatis batis;
 
     public EncryptionResponse encrypt(String password) {
-		EncryptionResponse response = api.encrypt("my-secret-key", password, "AES");
+		EncryptionResponse response = api.encrypt("my-secret-key", URLEncoder.encode(password, StandardCharsets.UTF_8), "AES");
 		batis.insert(response.getResult());
 		return response;
 	}
