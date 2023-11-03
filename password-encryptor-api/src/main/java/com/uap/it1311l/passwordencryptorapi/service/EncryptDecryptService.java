@@ -26,10 +26,17 @@ public class EncryptDecryptService {
 		return response;
 	}
 
-	public DecryptionResponse decrypt(String encryptedPassword){
-		String encryptedText = batis.findEncryptedPassword(encryptedPassword);
-		DecryptionResponse response = api.decrypt("AES", "my-secret-key", encryptedText);
-		return response;
-	}
+    public String decrypt(String encryptedText) 
+    {
+        if (batis.exists(encryptedText) > 0) 
+        {
+            DecryptionResponse response = api.decrypt("my-secret-key", encryptedText, "AES");
+            return response.getResult();
+        } 
+        else 
+        {
+            return "Encrypted Password does not exist.";
+        }
+    } 
 
 }

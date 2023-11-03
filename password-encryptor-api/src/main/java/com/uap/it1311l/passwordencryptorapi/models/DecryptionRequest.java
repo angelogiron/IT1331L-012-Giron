@@ -1,13 +1,14 @@
 package com.uap.it1311l.passwordencryptorapi.models;
 
 public class DecryptionRequest {
-	private String encryptedPassword;
+	private String password;
 
-	public String getEncryptedPassword() {
-		return encryptedPassword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setEncryptedPassword(String encryptedPassword) {
-		this.encryptedPassword = encryptedPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
+
 }

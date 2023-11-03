@@ -12,6 +12,6 @@ public interface passwordMyBatis {
 	@Insert("INSERT INTO password(encryptedPassword) VALUES (#{password})")
 	public void insert(String password);
 	
-	@Select("SELECT encryptedPassword FROM password WHERE encryptedPassword = #{encryptedPassword}")
-	public String findEncryptedPassword(String encryptedPassword);
+	@Select("SELECT COUNT(*) FROM password WHERE encryptedPassword = #{password}")
+	public int exists(String password);
 }

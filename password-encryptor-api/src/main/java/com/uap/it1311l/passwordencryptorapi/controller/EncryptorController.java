@@ -1,7 +1,6 @@
 package com.uap.it1311l.passwordencryptorapi.controller;
 
-import com.uap.it1311l.passwordencryptorapi.models.DecryptionRequest;
-import com.uap.it1311l.passwordencryptorapi.models.DecryptionResponse;
+
 import com.uap.it1311l.passwordencryptorapi.models.EncryptionResponse;
 import com.uap.it1311l.passwordencryptorapi.models.UapEncryptionRequest;
 import com.uap.it1311l.passwordencryptorapi.service.EncryptDecryptService;
@@ -25,12 +24,8 @@ public class EncryptorController {
     public String decryptString(@RequestBody UapEncryptionRequest request) 
     {
         String encryptedPassword = request.getPassword();
-        DecryptionResponse decryptionResponse = encryptDecryptService.decrypt(encryptedPassword);
-        
-        if (decryptionResponse == null) 
-        {
-            return "Encrypted Password does not exist.";
-        }
-        return decryptionResponse.getResult();
+        String decryptedResult = encryptDecryptService.decrypt(encryptedPassword);
+
+        return decryptedResult;
     }
 }
