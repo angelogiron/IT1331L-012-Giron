@@ -11,9 +11,15 @@ import org.springframework.web.service.annotation.HttpExchange;
 public interface EncryptionApiClient 
 {
     @GetExchange("/encryptstring?secretKey={secretKey}&plainText={plainText}&cryptAlgorithm={cryptAlgorithm}")
-    public EncryptionResponse encrypt(@PathVariable String secretKey, @PathVariable String plainText, @PathVariable String cryptAlgorithm);
+    public EncryptionResponse encrypt(
+    		@PathVariable String secretKey, 
+    		@PathVariable String plainText, 
+    		@PathVariable String cryptAlgorithm);
     
     @GetExchange("/decryptstring?secretKey={secretKey}&encryptedText={encryptedText}&cryptAlgorithm={cryptAlgorithm}")
-    public DecryptionResponse decrypt(@PathVariable String secretKey, @PathVariable String encryptedText, @PathVariable String cryptAlgorithm);
+    public DecryptionResponse decrypt(
+    		@PathVariable String secretKey, 
+    		@PathVariable String encryptedText, 
+    		@PathVariable String cryptAlgorithm);
 }
 
